@@ -23,10 +23,7 @@ const fs = require("fs/promises");
 		const numbers = data.split(" ");
 
 		numbers[0] = previousStart + numbers[0];
-		if (numbers[numbers.length - 1] === "") {
-			previousStart = "";
-			numbers.pop();
-		} else if (
+		if (
 			Number(numbers[numbers.length - 1]) - 1 !==
 			Number(numbers[numbers.length - 2])
 		) {
@@ -37,6 +34,7 @@ const fs = require("fs/promises");
 
 		numbers.forEach((number) => {
 			if (number % 2 === 0) {
+				// default type conversion - string to number
 				count++;
 				if (!writeStream.write(`${number}\n`)) {
 					// console.log(
